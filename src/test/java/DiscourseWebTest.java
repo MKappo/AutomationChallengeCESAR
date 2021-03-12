@@ -11,7 +11,7 @@ public class DiscourseWebTest {
     private WebDriver navegador;
 
     @Before
-    public void SetUp(){
+    public void setUp(){
 
         //Environment Configuration
         System.setProperty("webdriver.chrome.driver", "/home/mkapobianco/Drivers/chromedriver");
