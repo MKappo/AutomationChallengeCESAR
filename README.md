@@ -15,6 +15,16 @@ Here in this repository you will find a project I created using __Java8__ as mai
 * Once you have environment ready just open the project folder on your IDE.
 * Usually the IDE will ask to download all dependencies (described on __pom.xml__) as others dependencies needed to support Java.
   * In case of VSCode you can use this [documentation](https://code.visualstudio.com/docs/languages/java) for your reference.
+* Before run the tests you should change the path from chrome-driver. This change should be done on both Java classes:
+  * CesarShoolWebTest at @before block
+  * DiscourseWebTest at @before block 
+```shell
+@Before
+    public void setUp(){
+
+        //Environment Configuration
+        System.setProperty("webdriver.chrome.driver", "/home/user/drivers/chromedriver");
+```
 * Now, you are ready to run the tests on your IDE. This may change from IDE to IDE:
   * In case of VSCode there is a tab called "Test". You just need to select it and then press __Run All Tests__
   * Using IntelliJ you just need to right click on folder __src/test/java__ then __Run 'All Tests'__
