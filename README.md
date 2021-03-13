@@ -3,6 +3,7 @@ Technical evaluation about test automation and development skills.
 
 # About Project (test scenarios created)
 To be more fluid, I created only one project and two separated classes for each automation challenge.
+
 Here in this repository you will find a project I created using __Java8__ as main language, __Maven__ to manage dependencies, __Junit__ framework to create each request of the challenge as a test, __Selenium-WebDriver__ framework to manipulate my tests and using some resources.
 
 
