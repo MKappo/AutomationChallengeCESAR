@@ -103,7 +103,7 @@ public class DiscourseWebTest {
         }
 
         map.forEach((category, topics) -> {
-            if (topics > 1)
+            if (topics > 0)
                 System.out.println("The category '" + category + "' has " + topics + " topics associated");
         });
 
