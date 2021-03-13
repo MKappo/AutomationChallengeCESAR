@@ -7,8 +7,10 @@ Here in this repository you will find a project I created using __Java8__ as mai
 # How to Run the Project
 * Fork the project or download it if you prefer
 * You should have [Java 8](https://www.java.com/en/download/help/index_installing.html) installed.
-* You should have [ChromeDriver] (https://chromedriver.chromium.org/downloads) installed, or other browser driver you prefer.
-* This project was created on IntelliJ but you can choose an IDE you prefer like IntelliJ or VSCode
-* Once you have environment ready just open the project folder on your IDE
-* Usually the IDE will ask to download all dependencies (described on pom.xml) as others needed to support Java.
-  * In case of VSCode you can use this [documentation] (https://code.visualstudio.com/docs/languages/java) for your reference 
+* You should have [ChromeDriver](https://chromedriver.chromium.org/downloads) installed, or other browser-driver you prefer.
+* This project was created on IntelliJ but you can choose another IDE you prefer like IntelliJ or VSCode.
+* Once you have environment ready just open the project folder on your IDE.
+* Usually the IDE will ask to download all dependencies (described on __pom.xml__) as others dependencies needed to support Java.
+  * In case of VSCode you can use this [documentation](https://code.visualstudio.com/docs/languages/java) for your reference.
+* Now, you are ready to run the tests on your IDE. This may change from IDE to IDE:
+  * In case of VSCode 
