@@ -199,9 +199,9 @@ public class DiscourseWebTest {
 
      //Once I have all data in my arrays i just used my "control variable" to decide what to show.
         if (hasViewsOver1k){
-            System.out.println("The most viewed topic is '" + topicTitleNameForHigher1k.get(topicTitleNameForHigher1k.size()-1) + "' with " + viewsHigherNumbersConverted.get(viewsHigherNumbersConverted.size()-1) + " views");
+            System.out.println("The most viewed topic is '" + topicTitleNameForHigher1k.get(topicTitleNameForHigher1k.size()-1) + "' with " + viewsHigherNumbersConverted.get(viewsHigherNumbersConverted.size()-1) + "k views");
         }else{
-            System.out.println("The most viewed topic is '" + topicTitleName.get(topicTitleName.size()-1) + "' with " + viewsNumbers.get(viewsNumbers.size()-1) + " views");
+            System.out.println("The most viewed topic is '" + topicTitleName.get(topicTitleName.size()-1) + "' with " + viewsNumbers.get(viewsNumbers.size()-1) + "k views");
         }
 
     }
