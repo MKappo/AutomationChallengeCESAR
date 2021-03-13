@@ -53,7 +53,8 @@ public class DiscourseWebTest {
 
         List<WebElement> lockedTopics = navegador.findElements((By.cssSelector("tr.closed")));
 
-        System.out.println("The following topics are locked: ");
+        System.out.println("The following topics are locked:");
+        System.out.println("-------------------------------------------");
 
         //Now with the list of elements, I created a loop run throw the list and print the element
         for (int i = 0; i < lockedTopics.size(); i++) {
@@ -72,6 +73,9 @@ public class DiscourseWebTest {
     @Test
     public void testPrintQtyOfItemsFromEachCategory(){
 
+
+        System.out.println("Topics with a Category associated:");
+        System.out.println("-----------------------------------");
         /*
         I inspected the website code and noticed the class "category-name" was the key
         to find all topics with at least one category associated. So I created a list
@@ -100,7 +104,7 @@ public class DiscourseWebTest {
 
         map.forEach((category, topics) -> {
             if (topics > 1)
-                System.out.println("The category " + category + " has " + topics + " topics associated");
+                System.out.println("The category '" + category + "' has " + topics + " topics associated");
         });
 
     }
@@ -132,12 +136,11 @@ public class DiscourseWebTest {
         List<String> viewsHighersNumbers = new ArrayList<>();
         List<String> topicTitleName = new ArrayList<>();
         List<String> topicTitleNameForHigher1k = new ArrayList<>();
+        List<Double> viewsHigherNumbersConverted = new ArrayList<>();
 
         //This variable is to control which array to use to collect views and topic name.
         boolean hasViewsOver1k = false;
 
-        //I used this variable to create a correlation between higher number of view and topic name.
-        int arrayPosition;
 
         //Now with the list of elements, I created a loop run to populate my arrays
         for (WebElement extracted : valueExtracted) {
@@ -146,38 +149,59 @@ public class DiscourseWebTest {
             String numberOfViews = extracted.findElement(By.cssSelector("td.num.views")).getText();
             String topicName = extracted.findElement(By.cssSelector("a.title")).getText();
 
+
             //Here I created the condition to split the date in proper array I've created.
             if (numberOfViews.contains("k")) {
                 hasViewsOver1k = true;
-                viewsHighersNumbers.add(numberOfViews);
-                Collections.sort(viewsHighersNumbers);
+                String newValue = numberOfViews.replace("k","");
+                viewsHighersNumbers.add(newValue);
+
+                /*
+                Still due to "k" design decision for number over 1 thousand, I faced a big
+                challenge to make it happens. So after remove 'k' on previous line, here
+                was need to filter numbers to String than convert to double.
+                 */
+                String filtering = viewsHighersNumbers.get(viewsHighersNumbers.size()-1);
+                double converting = Double.parseDouble(filtering);
+
+                //now with the value clean, I could add it in another array and sort properly.
+                viewsHigherNumbersConverted.add(converting);
+                Collections.sort(viewsHigherNumbersConverted);
 
                 /*
                 This code below is to ensure the name of topic with higher view always
-                would be added to end the end of array, as I did for view number.
+                would be added at the end of array, as I did for view numbers.
                  */
-                arrayPosition = viewsHighersNumbers.size()-1;
-                topicTitleNameForHigher1k.add(arrayPosition, topicName);
-                Collections.sort(topicTitleNameForHigher1k);
+
+                if(viewsHigherNumbersConverted.get(viewsHigherNumbersConverted.size()-1) <= converting){
+                    topicTitleNameForHigher1k.add(topicName);
+                }else{
+                    topicTitleNameForHigher1k.add(0, topicName);
+                }
+
 
             } else {
+
                 viewsNumbers.add(Integer.parseInt(numberOfViews));
                 Collections.sort(viewsNumbers);
+                int indexNumber = viewsNumbers.indexOf(Integer.parseInt(numberOfViews));
 
                 //Same logic used above, but here for cases where there is no values equal or over 1k
-                arrayPosition = viewsNumbers.size()-1;
-                topicTitleName.add(arrayPosition, topicName);
-                Collections.sort(topicTitleName);
-
+                if(indexNumber > topicTitleName.size()){
+                    topicTitleName.add(topicName);
+                }else{
+                    topicTitleName.add(indexNumber, topicName);
+                }
             }
 
         }
 
-        //Once I have all data in my arrays i juest used my "control variable" to decide what to show.
+
+     //Once I have all data in my arrays i just used my "control variable" to decide what to show.
         if (hasViewsOver1k){
-            System.out.println("The most viewed topic (" + topicTitleNameForHigher1k.get(topicTitleNameForHigher1k.size()-1) + ") has " + viewsHighersNumbers.get(viewsHighersNumbers.size()-1) + " views");
+            System.out.println("The most viewed topic is '" + topicTitleNameForHigher1k.get(topicTitleNameForHigher1k.size()-1) + "' with " + viewsHigherNumbersConverted.get(viewsHigherNumbersConverted.size()-1) + " views");
         }else{
-            System.out.println("The most viewed topic (" + topicTitleName.get(topicTitleName.size()-1) + ") has " + viewsNumbers.get(viewsNumbers.size()-1) + " views");
+            System.out.println("The most viewed topic is '" + topicTitleName.get(topicTitleName.size()-1) + "' with " + viewsNumbers.get(viewsNumbers.size()-1) + " views");
         }
 
     }

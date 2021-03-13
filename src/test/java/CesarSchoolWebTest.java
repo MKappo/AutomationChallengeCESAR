@@ -60,8 +60,10 @@ public class CesarSchoolWebTest {
 
         }
 
-        System.out.println("Article: " + articleTitles.get(1));
-        System.out.println("Created: " + articleDates.get(1));
+        System.out.println("Second article details at second School blog page:");
+        System.out.println("--------------------------------------------------------------------");
+        System.out.println("Article Name: " + articleTitles.get(1));
+        System.out.println("Created Date: " + articleDates.get(1));
 
     }
 
@@ -87,8 +89,10 @@ public class CesarSchoolWebTest {
 
         }
 
-        System.out.println("Article: " + articleTitles.get(2));
-        System.out.println("Written by: " + articleAuthor.get(2));
+        System.out.println("Third article details at second School blog page:");
+        System.out.println("-------------------------------------------------------------");
+        System.out.println("Article Name: " + articleTitles.get(2));
+        System.out.println("Written By: " + articleAuthor.get(2));
 
     }
 
