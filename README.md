@@ -1,5 +1,5 @@
 # Objective
-Technical evaluation about automation and development skills.
+Technical evaluation about test automation and development skills.
 
 # About Project (test scenarios created)
 To be more fluid, I created only one project and two separated classes for each automation challenge.
